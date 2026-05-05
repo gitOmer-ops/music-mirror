@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Mirror | Spotify Personality Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Music Mirror Spotify personality analyzer">
+      <section class="intro-panel">
+        <nav class="topbar">
+          <div class="brand-mark" aria-hidden="true">MM</div>
+          <button class="icon-button" id="resetApp" aria-label="Reset app">
+            <span>↻</span>
+          </button>
+        </nav>
+
+        <section class="hero-copy">
+          <p class="eyebrow">Spotify-wrapped style analyzer</p>
+          <h1>Music Mirror</h1>
+          <p>
+            Turn your top artists and tracks into a shareable personality profile:
+            archetype, mood spectrum, alter ego, and genre DNA.
+          </p>
+        </section>
+
+        <section class="connect-card" id="connectCard">
+          <label for="clientId">Spotify client ID</label>
+          <div class="client-row">
+            <input id="clientId" autocomplete="off" placeholder="Paste your public client ID" />
+            <button id="saveClient">Save</button>
+          </div>
+          <p>
+            Add this page URL as a redirect URI in your Spotify developer app, then connect.
+            No client secret is needed.
+          </p>
+          <div class="action-row">
+            <button class="primary-button" id="connectSpotify">Connect Spotify</button>
+            <button class="secondary-button" id="useDemo">Use demo taste</button>
+          </div>
+          <p class="status-line" id="authStatus"></p>
+        </section>
+
+        <section class="mini-feed" aria-label="Analysis feature preview">
+          <article>
+            <strong>8 archetypes</strong>
+            <span>From Velvet Time Traveler to Neon Main Character.</span>
+          </article>
+          <article>
+            <strong>Mood math</strong>
+            <span>Energy, danceability, valence, acousticness, and tempo become a taste map.</span>
+          </article>
+          <article>
+            <strong>Share card</strong>
+            <span>Export a square PNG or share directly from supported browsers.</span>
+          </article>
+        </section>
+      </section>
+
+      <section class="profile-workspace">
+        <section class="loading-view" id="loadingView" hidden>
+          <div class="pulse-disc" aria-hidden="true"></div>
+          <h2>Reading your music DNA</h2>
+          <p id="loadingCopy">Finding the patterns hiding inside your recent obsessions.</p>
+        </section>
+
+        <section class="profile-view" id="profileView" hidden>
+          <section class="share-card" id="shareCard" aria-label="Shareable music personality card">
+            <div class="card-topline">
+              <span>Music Mirror</span>
+              <span id="shareDate">2026</span>
+            </div>
+
+            <section class="persona-lockup">
+              <div class="vinyl-art" id="vinylArt" aria-hidden="true">
+                <span></span>
+              </div>
+              <div>
+                <p class="eyebrow">Listening archetype</p>
+                <h2 id="archetypeName">Neon Main Character</h2>
+                <p id="archetypeTagline">High-gloss hooks, late-night confidence, zero skips.</p>
+              </div>
+            </section>
+
+            <section class="alter-ego">
+              <p class="eyebrow">Alter ego</p>
+              <h3 id="alterEgoName">The Velvet Signal</h3>
+              <p id="alterEgoCopy">You collect songs like secret doors and know exactly when the chorus should hit.</p>
+            </section>
+
+            <section class="mood-spectrum" aria-label="Mood spectrum">
+              <div class="spectrum-head">
+                <span>Still</span>
+                <strong id="moodTitle">Radiant motion</strong>
+                <span>Electric</span>
+              </div>
+              <div class="spectrum-track">
+                <span id="moodNeedle"></span>
+              </div>
+            </section>
+
+            <section class="card-grid">
+              <article class="dna-panel">
+                <div class="pie-chart" id="genrePie" aria-hidden="true"></div>
+                <div>
+                  <p class="eyebrow">Genre DNA</p>
+                  <ol id="genreList"></ol>
+                </div>
+              </article>
+              <article class="score-panel">
+                <p class="eyebrow">Taste says</p>
+                <strong id="tasteScore">84%</strong>
+                <span id="tasteCopy">romantic chaos with excellent pacing</span>
+              </article>
+            </section>
+
+            <section class="truth-panel">
+              <p class="eyebrow">What your taste says about you</p>
+              <p id="truthCopy">
+                You are emotionally cinematic, allergic to boring bridges, and always one perfect song away from a plot twist.
+              </p>
+            </section>
+          </section>
+
+          <section class="inspector">
+            <div class="section-title">
+              <p class="eyebrow">Your breakdown</p>
+              <h2>Inside the profile</h2>
+            </div>
+            <div class="metric-grid" id="metricGrid"></div>
+            <div class="top-lists">
+              <article>
+                <h3>Top artists</h3>
+                <ul id="artistList"></ul>
+              </article>
+              <article>
+                <h3>Signal tracks</h3>
+                <ul id="trackList"></ul>
+              </article>
+            </div>
+            <div class="share-actions">
+              <button class="primary-button" id="shareImage">Share image</button>
+              <button class="secondary-button" id="downloadImage">Download PNG</button>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
